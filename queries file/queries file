@@ -1,0 +1,42 @@
+Report_1: how many products were bought from a specific company( APPLE )
+
+SELECT name,count(Ordered_Products.orderd_product_id)as sold from Products
+LEFT JOIN Ordered_Products ON product_id = fk_product_id
+ where `fk_company_id` = 1; 
+
+
+===================
+Report_2: who purchased products on this date
+
+SELECT * 
+FROM Orders
+WHERE date = "2021-08-08"
+
+=================
+ Report_3: what  products were sent between this and that date, 
+
+
+ SELECT * 
+FROM Orders
+WHERE shipping_date BETWEEN "2021-08-07" AND "2021-08-08"
+
+================
+Report_4: how many products were sent to a specific city etc. 
+
+
+SELECT Cities.title,COUNT(*) as orderNumber 
+FROM Cities LEFT JOIN Address on city_id = fk_city_id 
+LEFT JOIN Orders on Address.address_id = Orders.fk_address_id where city_id = 1;
+
+===========
+Report_5 which states blongs to which countries: 
+
+
+SELECT States.title as State, Countries.title as Country FROM States 
+LEFT JOIN Countries on country_id = fk_country_id;
+
+
+===========
+report_6 : select specific user
+
+SELECT * From Customers where customer_id = 2;
